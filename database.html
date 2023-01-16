@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<head>
+    <style>
+        .nav {
+            background-color: #777447;
+            width: 10%;
+            height: 700px;
+            margin-top: -10px;
+        }
+        
+        .nav ul {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: -35px;
+            list-style: none;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 5px;
+        }
+        
+        .nav li:hover {
+            background-color: black;
+            font-size: 28px;
+        }
+        
+        hr {
+            color: black;
+            font-size: 5px;
+        }
+        
+        .data {
+            float: right;
+            width: 89.8%;
+            height: 700px;
+            background-color: black;
+            margin-top: -665px;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .data .course {
+            font-size: 14px;
+            margin-left: 10px;
+            color: white;
+        }
+        
+        .data .cap {
+            font-size: 14px;
+            color: white;
+            margin-left: 60px;
+        }
+        
+        .data .stu {
+            font-size: 14px;
+            width: 100px;
+            color: white;
+            margin-left: 60px;
+        }
+        
+        .data .btn {
+            font-size: 14px;
+            width: 100px;
+            border-radius: 2px;
+            margin-left: 60px;
+        }
+        
+        .data .btn a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .data .btn:hover {
+            background-color: inherit;
+            opacity: .6;
+        }
+        
+        .nav2 {
+            margin-top: -700px;
+            margin-left: 250px;
+            background-color: #777447;
+            float: right;
+            width: 89.8%;
+        }
+        
+        .nav2 li {
+            display: inline;
+            padding: 10px;
+        }
+        
+        .nav2 li a {
+            color: white;
+            margin-top: -5px;
+            text-decoration: none;
+        }
+        
+        .nav2 li:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='nav'>
+        <ul>
+            <li style=" margin-top:10px;"> <a href="{{url_for('index')}}"> Room Assignment  </a> </li>
+            <hr>
+            <li> <a href="{{url_for('database_room')}}"> Database </a> </li>
+            <hr>
+
+        </ul>
+    </div>
+
+
+
+    <div class='nav2'>
+        <ul>
+            <li> <a href="{{url_for('database_room')}}"> Rooms </a></li>
+            <li><a href="{{url_for('database')}}"> List of Courses </a></li>
+        </ul>
+
+
+    </div>
+
+    <div class="data">
+        <select style="float: right ;width: 39.8%;">
+         <option> ALL LEVELS </option>
+         <option> 100L </option>
+         <option> 200L </option>
+         <option> 300L </option>
+         <option> 400L </option>
+         <option> 500L </option>
+       </select> {% for t in data %}
+        <div style="border:1px solid white">
+            <span class='course'> {{t.course}}</span>
+            <span class='cap'> {{t.capacity}} </span>
+            <span class='stu'> {{ t.nostudent }}</span>
+
+            <span class='btn'> <a href="#" style="font-size:10;font-style:italic"> edit <img src='../static/img/edit.png' width=15px height=15px /> </a> </span>
+            <span class='btn' id="button"> <a href="#" style="font-size:10;font-style:italic"> delete <img src='../static/img/delete.png' width=15px height=15px />  </a> </span>
+            <script>
+                var x = document.getElementById('delete');
+                x.onclick = function() {
+
+                    if (confirm('Are you sure you want to delete this data?')) {
+
+                    } else {
+                        return false;
+                    }
+                }
+            </script>
+        </div>
+
+        </br>
+        </br>
+
+        {% endfor %}
+    </div>
+
+</body>
+
+
+
+
+
+
+</HTML>

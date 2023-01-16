@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<head>
+    <style>
+        .nav {
+            background-color: #777447;
+            width: 10%;
+            height: 700px;
+            margin-top: -20px;
+        }
+        
+        .nav li {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: -37px;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 5px;
+        }
+        
+        .nav li:hover {
+            background-color: black;
+            font-size: 28px;
+        }
+        
+        hr {
+            color: black;
+            font-size: 5px;
+        }
+        
+        .tb {
+            margin-left: 200px;
+            margin-top: -720px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='nav'>
+        <ul>
+            <li> <a href="{{url_for('index')}}"> Room Assignment </a></li>
+            <hr>
+            <li> <a href="{{url_for('database_room')}}"> Database </a></li>
+            <hr>
+
+        </ul>
+
+    </div>
+
+    <div class='tb'>
+        <div style="width:100%;background-color: #777447">
+            <h1 id="h1" style='color: white;background-color: #777447'> Room Assignment for Face-to-Face Courses </h1>
+            <select style="width:30%;float: right;">
+         <option value="All">All LEVELS</option>
+         <option value="100">100L</option>
+         <option value="200">200L</option>
+         <option value="300">300L</option>
+         <option value="400">400L</option>
+         <option value="500">500L</option>
+        </select>
+        </div>
+        <section id="table" style="width: 100%; color:white;background-color:#777447;font-size:30px">{% for table in tables %} {{ table|safe }} {% endfor %}
+        </section>
+    </div>
+
+</body>
+<script>
+    window.onload = function() {
+        //selection
+        var sec = document.getElementById('table');
+        var h1 = document.getElementById('h1');
+        //TableSection
+        sec.onmouseover = function() {
+            sec.style.fontSize = '40px';
+            sec.style.backgroundColor = 'black';
+        }
+        sec.onmouseout = function() {
+                sec.style.fontSize = '30px';
+                sec.style.backgroundColor = '#777447';
+            }
+            //h1 
+        h1.onmouseover = function() {
+            h1.style.backgroundColor = 'black';
+
+        }
+        h1.onmouseout = function() {
+            h1.style.backgroundColor = '#777447';
+        }
+    }
+</script>
+
+
+
+
+
+</HTML>
